@@ -64,11 +64,13 @@ export interface AgentBridge {
     /** Send user input (audio/image) to the LLM */
     sendMedia(chunk: MediaChunk): Promise<void>;
     /** Send system/tool results to the LLM */
-    sendContext(context: string): Promise<void>;
+    sendContext(context: string, turnComplete?: boolean): Promise<void>;
+    /** Send formal tool execution response to the LLM */
+    sendToolResponse?(actionId: string, name: string, result: any): Promise<void>;
     /** Close the LLM session */
     stop(): Promise<void>;
     /** Callbacks for LLM events */
     onServerContent: (content: ServerContent) => void;
-    onClientAction: (action: ClientAction) => void;
+    onClientAction: (action: ClientAction) => Promise<any>;
     onError: (error: any) => void;
 }
