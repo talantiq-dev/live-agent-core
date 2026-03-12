@@ -48,7 +48,7 @@ export type ServerEvent =
 
 export interface AgentBridge {
     /** Start a new session with the underlying LLM */
-    start(config: { systemInstruction: string; tools: any[]; modality: Modality }): Promise<void>;
+    start(config: { systemInstruction: string; tools: any[]; modality: Modality; model?: string }): Promise<void>;
     /** Send user input (audio/image) to the LLM */
     sendMedia(chunk: MediaChunk): Promise<void>;
     /** Send system/tool results to the LLM */

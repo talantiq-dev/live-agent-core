@@ -59,6 +59,7 @@ export interface AgentBridge {
         systemInstruction: string;
         tools: any[];
         modality: Modality;
+        model?: string;
     }): Promise<void>;
     /** Send user input (audio/image) to the LLM */
     sendMedia(chunk: MediaChunk): Promise<void>;
