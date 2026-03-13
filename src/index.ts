@@ -36,6 +36,7 @@ export interface ClientAction {
     type: string;
     payload?: any;
     actionId: string;
+    silent?: boolean;
 }
 
 export type ServerEvent =
